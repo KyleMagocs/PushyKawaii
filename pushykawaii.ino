@@ -132,8 +132,8 @@ void setup() {
   FastLED.setBrightness(brightness);
   FastLED.clear();
   FastLED.show();
-//  EEPROM.get(0, counter);
-  counter = 89990;
+  EEPROM.get(0, counter);
+//  counter = 88846;
 
   for (int i = 0; i < FIREWINDOWS; i++){
     allFireCounts[i] = 0;
@@ -174,7 +174,7 @@ void readButton() {
       if (counter % 1000 == 420) { weedTimer = 0; weedHue = 105; }
       if (counter % 1000 == 0) { shuffleColors(); }
       
-//      if (counter % 50 == 0) EEPROM.put(0, counter);
+      if (counter % 50 == 0) EEPROM.put(0, counter);
     }
     prevButtonState = counterButton;
   }
@@ -200,7 +200,7 @@ void displayReset() {
 
   for (int i = 0; i < resetCounter; i++)
   {
-    if (i == 61 || i == 69) continue;
+    if (i == 61 || i == 69) continue;  // lol this is out of date, I forget what it is now... 22?
     leds[i].setHSV(colors[1][0], colors[1][1], colors[1][2]);
   }
 }
